@@ -22,7 +22,7 @@ def author_search(csv_file, author):
         if give_date != '':
             date = give_date.split(' ')
             date_year = int(date[0].split('.')[-1])
-            if 2016<=date_year <= 2018:
+            if 2016 <= date_year <= 2018:
                 if author.lower() in book_author.lower():
                     if [title, book_author] not in printed_books:
                         counter += 1
@@ -63,6 +63,7 @@ def get_tags(csv_file):
     for data in reader:
         raw_tags = data["Жанр книги"]
         for tag in raw_tags.split('#'):
+            tag = tag.strip()
             if tag != '' and tag not in unique_tags:
                 unique_tags.append(tag)
     print(f'Уникальные теги:')
@@ -91,4 +92,5 @@ with open("books.csv", encoding="utf-8") as books:
     #     out_file.write(make_references(books,20))
     # get_tags(books)
     # get_popular(books, 20)
+
 # do_parsing()
